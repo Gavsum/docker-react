@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t gavsum/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true gavsum/docker-react npm run test
